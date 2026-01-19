@@ -102,7 +102,7 @@ Click the "Cheat" button to reveal all possible words on the current board. In c
 
 ## Version History
 
-**v1.2.3** (2025.01.18)
+**v1.2.3** (2026.01.18)
 - Fixed Qu scoring calculation
 - Fixed division by zero in scrollbar rendering
 
