@@ -1,7 +1,7 @@
 # ═══════════════════════════════════════════════════════════════════════════
 # Woggle 1.2.4 - An Oddly Familiar Word Game
 # by no1453@gmail.com
-# 2025.01.19
+# 2026.01.19
 # A Boggle-style word game with timer, scoring, and cheat mode
 # FIXED: Visual style of cube corners
 # ═══════════════════════════════════════════════════════════════════════════
