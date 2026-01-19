@@ -20,7 +20,7 @@ pip install pygame numpy
 ## Setup
 
 1. Clone or download this repository
-2. Place a dictionary file named `words` in the same directory as `woggle_v1.2.3.py`,
+2. Place a dictionary file named `words` in the same directory as `woggle.py`,
    also needed are the icon and splash files.
    - The dictionary should contain one word per line
    - Only words with 3 or more letters will be used
@@ -30,7 +30,7 @@ pip install pygame numpy
 
 Run the game with:
 ```bash
-python woggle_v1.2.3.py
+python woggle.py
 ```
 
 ### Basic Rules
@@ -101,6 +101,9 @@ Click the "Cheat" button to reveal all possible words on the current board. In c
 - Smooth scrolling with mouse wheel and draggable scrollbars
 
 ## Version History
+
+**v1.2.4** (2026.01.19)
+- Fixed vidual style of the corners of the cubes
 
 **v1.2.3** (2026.01.18)
 - Fixed Qu scoring calculation
