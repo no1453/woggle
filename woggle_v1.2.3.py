@@ -1,7 +1,7 @@
 # ═══════════════════════════════════════════════════════════════════════════
 # Woggle 1.2.3 - An Oddly Familiar Word Game
 # by no1453@gmail.com
-# 2025.01.18
+# 2026.01.18
 # A Boggle-style word game with timer, scoring, and cheat mode
 # FIXED: Qu scoring calculation and division by zero in scrollbars
 # ═══════════════════════════════════════════════════════════════════════════
