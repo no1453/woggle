@@ -1,9 +1,9 @@
 # ═══════════════════════════════════════════════════════════════════════════
-# Woggle 1.2.4 - An Oddly Familiar Word Game
+# Woggle 1.2.5 - An Oddly Familiar Word Game
 # by no1453@gmail.com
 # 2026.01.19
 # A Boggle-style word game with timer, scoring, and cheat mode
-# FIXED: Visual style of cube corners
+# FIXED: Visual style of grid corners on cubes, cube face
 # ═══════════════════════════════════════════════════════════════════════════
 
 # ───────────────────────────────────────────────────────────────────────────
@@ -825,6 +825,10 @@ while running:
 
             # Draw rounded rectangle with border
             draw_rounded_rect(screen, color, rect, border_radius=15, border_width=2, border_color=GRAY)
+
+            # Draw second smaller rounded rectangle, 10 pixels inset on each side
+            inner_rect = pygame.Rect(rect.x + 10, rect.y + 10, rect.width - 20, rect.height - 20)
+            draw_rounded_rect(screen, color, inner_rect, border_radius=10, border_width=2, border_color=GRAY)
 
             # Draw letter in center of cell
             letter = board[row * GRID_SIZE + col]
