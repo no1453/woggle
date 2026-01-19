@@ -103,7 +103,7 @@ Click the "Cheat" button to reveal all possible words on the current board. In c
 ## Version History
 
 **v1.2.4** (2026.01.19)
-- Fixed vidual style of the corners of the cubes
+- Fixed visual style of the corners of the cubes
 
 **v1.2.3** (2026.01.18)
 - Fixed Qu scoring calculation
