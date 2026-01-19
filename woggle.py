@@ -396,6 +396,7 @@ SCREEN_HEIGHT = GRID_SIZE * CELL_SIZE + 180
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GRAY = (200, 200, 200)
+LIGHT_GRAY = (230, 230, 230)
 BLUE = (100, 150, 255)
 DARK_BLUE = (70, 120, 220)
 YELLOW = (255, 255, 100)
@@ -828,7 +829,7 @@ while running:
 
             # Draw second smaller rounded rectangle, 10 pixels inset on each side
             inner_rect = pygame.Rect(rect.x + 10, rect.y + 10, rect.width - 20, rect.height - 20)
-            draw_rounded_rect(screen, color, inner_rect, border_radius=10, border_width=2, border_color=GRAY)
+            draw_rounded_rect(screen, color, inner_rect, border_radius=10, border_width=4, border_color=LIGHT_GRAY)
 
             # Draw letter in center of cell
             letter = board[row * GRID_SIZE + col]
