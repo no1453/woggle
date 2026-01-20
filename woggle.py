@@ -543,20 +543,26 @@ while running:
             # BOARD LETTER SELECTION
             # Click letters to build a word by selecting adjacent positions.
             # ───────────────────────────────────────────────────────────────
-            if mx < GRID_WIDTH and my < GRID_SIZE * CELL_SIZE:
-                col = mx // CELL_SIZE
-                row = my // CELL_SIZE
-                pos = (row, col)
-                
-                if not selected_path:
-                    # Start new word
-                    selected_path = [pos]
-                elif pos == selected_path[0]:
-                    # Clicked first letter again - clear selection
-                    selected_path = []
-                elif pos not in selected_path and is_adjacent(selected_path[-1], pos):
-                    # Add adjacent letter to word
-                    selected_path.append(pos)
+            if mx < GRID_WIDTH and my < GRID_SIZE * CELL_SIZE + 40:
+                # Adjust for 20 pixel grid border offset
+                adjusted_mx = mx - 20
+                adjusted_my = my - 20
+
+                # Only process if click is within the actual grid area
+                if 0 <= adjusted_mx < GRID_SIZE * CELL_SIZE and 0 <= adjusted_my < GRID_SIZE * CELL_SIZE:
+                    col = adjusted_mx // CELL_SIZE
+                    row = adjusted_my // CELL_SIZE
+                    pos = (row, col)
+
+                    if not selected_path:
+                        # Start new word
+                        selected_path = [pos]
+                    elif pos == selected_path[0]:
+                        # Clicked first letter again - clear selection
+                        selected_path = []
+                    elif pos not in selected_path and is_adjacent(selected_path[-1], pos):
+                        # Add adjacent letter to word
+                        selected_path.append(pos)
 
             # ───────────────────────────────────────────────────────────────
             # SUBMIT WORD BUTTON
