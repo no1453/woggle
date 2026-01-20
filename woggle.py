@@ -113,7 +113,7 @@ try:
     with open("words", "r", encoding="utf-8") as f:
         for line in f:
             word = line.strip().upper()
-            if word and len(word) >= 3:  # Only accept words 3+ letters
+            if word and 3 <= len(word) <= 16:  # Only accept words 3-16 letters
                 dictionary.add(word)
 except FileNotFoundError:
     print("Warning: 'words' file not found.")
