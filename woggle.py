@@ -384,13 +384,13 @@ def find_path_for_word(target, board):
 # Grid dimensions for the 4x4 board
 GRID_SIZE = 4
 CELL_SIZE = 100
-GRID_WIDTH = GRID_SIZE * CELL_SIZE
+GRID_WIDTH = GRID_SIZE * CELL_SIZE + 40  # Add 40 pixels for 20px border on each side
 
 # Panel dimensions for sidebars and UI elements
 SIDE_PANEL = 250
 BASE_WIDTH = GRID_WIDTH + SIDE_PANEL
 CHEAT_PANEL_WIDTH = 300
-SCREEN_HEIGHT = GRID_SIZE * CELL_SIZE + 180
+SCREEN_HEIGHT = GRID_SIZE * CELL_SIZE + 40 + 180  # Add 40 pixels for border
 
 # Color palette used for UI elements
 WHITE = (255, 255, 255)
@@ -399,6 +399,7 @@ GRAY = (200, 200, 200)
 LIGHT_GRAY = (230, 230, 230)
 BLUE = (100, 150, 255)
 DARK_BLUE = (70, 120, 220)
+NAVY_BLUE = (20, 60, 140)
 YELLOW = (255, 255, 100)
 RED = (220, 50, 50)
 GREEN = (0, 180, 0)
@@ -414,11 +415,11 @@ button_font = pygame.font.SysFont(None, 36)   # Medium font for buttons
 # BUTTON DEFINITIONS
 # Pre-defined rectangles for all interactive buttons in the UI.
 # ───────────────────────────────────────────────────────────────────────────
-submit_rect      = pygame.Rect(0, GRID_SIZE * CELL_SIZE,      GRID_WIDTH, 60)
-timer_toggle_rect = pygame.Rect(0, GRID_SIZE * CELL_SIZE + 60, GRID_WIDTH // 2, 60)
-timer_reset_rect  = pygame.Rect(GRID_WIDTH // 2, GRID_SIZE * CELL_SIZE + 60, GRID_WIDTH // 2, 60)
-reshuffle_rect    = pygame.Rect(0, GRID_SIZE * CELL_SIZE + 120, GRID_WIDTH // 2, 60)
-cheat_rect        = pygame.Rect(GRID_WIDTH // 2, GRID_SIZE * CELL_SIZE + 120, GRID_WIDTH // 2, 60)
+submit_rect      = pygame.Rect(0, GRID_SIZE * CELL_SIZE + 40,      GRID_WIDTH, 60)
+timer_toggle_rect = pygame.Rect(0, GRID_SIZE * CELL_SIZE + 100, GRID_WIDTH // 2, 60)
+timer_reset_rect  = pygame.Rect(GRID_WIDTH // 2, GRID_SIZE * CELL_SIZE + 100, GRID_WIDTH // 2, 60)
+reshuffle_rect    = pygame.Rect(0, GRID_SIZE * CELL_SIZE + 160, GRID_WIDTH // 2, 60)
+cheat_rect        = pygame.Rect(GRID_WIDTH // 2, GRID_SIZE * CELL_SIZE + 160, GRID_WIDTH // 2, 60)
 
 # ───────────────────────────────────────────────────────────────────────────
 # SPLASH SCREEN - borderless
@@ -808,12 +809,16 @@ while running:
     # ───────────────────────────────────────────────────────────────────────
 
     # Draw black background for the grid area to fill corner gaps
-    grid_background = pygame.Rect(0, 0, GRID_WIDTH, GRID_SIZE * CELL_SIZE)
+    grid_background = pygame.Rect(0, 0, GRID_WIDTH, GRID_SIZE * CELL_SIZE + 40)
     pygame.draw.rect(screen, BLACK, grid_background)
+
+    # Draw 20 pixel navy blue rounded rectangle border around the entire grid
+    grid_border = pygame.Rect(0, 0, GRID_WIDTH, GRID_SIZE * CELL_SIZE + 40)
+    draw_rounded_rect(screen, BLACK, grid_border, border_radius=15, border_width=20, border_color=NAVY_BLUE)
 
     for row in range(GRID_SIZE):
         for col in range(GRID_SIZE):
-            rect = pygame.Rect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE)
+            rect = pygame.Rect(col * CELL_SIZE + 20, row * CELL_SIZE + 20, CELL_SIZE, CELL_SIZE)
             pos = (row, col)
 
             # Choose cell color based on selection state
@@ -909,7 +914,7 @@ while running:
     # DRAW STATUS TEXT
     # Score, possible words count, and timer (color changes when low).
     # ───────────────────────────────────────────────────────────────────────
-    bottom_y = GRID_SIZE * CELL_SIZE + 30
+    bottom_y = GRID_SIZE * CELL_SIZE + 70
     
     screen.blit(small_font.render(f"Score: {score}", True, BLACK), (x, bottom_y))
     screen.blit(small_font.render(f"Words possible: {len(possible_words)}", 
