@@ -850,13 +850,13 @@ while running:
         for i in range(len(selected_path_from_cheat) - 1):
             r1, c1 = selected_path_from_cheat[i]
             r2, c2 = selected_path_from_cheat[i + 1]
-            
-            # Calculate center points of cells
-            x1 = c1 * CELL_SIZE + CELL_SIZE // 2
-            y1 = r1 * CELL_SIZE + CELL_SIZE // 2
-            x2 = c2 * CELL_SIZE + CELL_SIZE // 2
-            y2 = r2 * CELL_SIZE + CELL_SIZE // 2
-            
+
+            # Calculate center points of cells (offset by 20 for grid border)
+            x1 = c1 * CELL_SIZE + CELL_SIZE // 2 + 20
+            y1 = r1 * CELL_SIZE + CELL_SIZE // 2 + 20
+            x2 = c2 * CELL_SIZE + CELL_SIZE // 2 + 20
+            y2 = r2 * CELL_SIZE + CELL_SIZE // 2 + 20
+
             pygame.draw.line(screen, (0, 255, 32), (x1, y1), (x2, y2), 6)
 
     # ───────────────────────────────────────────────────────────────────────
