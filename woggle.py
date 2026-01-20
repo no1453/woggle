@@ -193,30 +193,31 @@ def is_adjacent(pos1, pos2):
 def is_valid_word(word, board, path):
     """
     Validate that a word is legal according to Boggle rules.
-    
+
     Checks:
     - Word is at least 3 letters
     - Word exists in dictionary
     - Path length matches word length (accounting for "QU")
     - All positions in path are adjacent
-    
+
     Args:
         word: The word string to validate
         board: The current board state (flat list of letters)
         path: List of (row, col) positions forming the word
-    
+
     Returns:
         True if word is valid, False otherwise
     """
     if len(word) < 3 or word not in dictionary:
         return False
-    
-    # Account for "QU" counting as one letter but two characters
-    word_length = len(word)
-    if word.startswith("QU"):
-        word_length -= 1
-    
-    if len(path) != word_length:
+
+    # Count how many "Qu" tiles are in the path
+    qu_count = sum(1 for r, c in path if board[r * GRID_SIZE + c] == "Qu")
+
+    # Expected word length = path length + number of "Qu" tiles (since "Qu" adds an extra character)
+    expected_word_length = len(path) + qu_count
+
+    if len(word) != expected_word_length:
         return False
     
     # Verify all positions are adjacent
@@ -844,7 +845,7 @@ while running:
 
             # Draw letter in center of cell
             letter = board[row * GRID_SIZE + col]
-            display = "QU" if letter == "Qu" else letter
+            display = letter  # Display "Qu" as is, all others are already uppercase
             text = font.render(display, True, BLACK)
             screen.blit(text, text.get_rect(center=rect.center))
 
@@ -872,7 +873,7 @@ while running:
     x = GRID_WIDTH + 20
     
     # Current word being built
-    current = "".join(board[r*GRID_SIZE + c].replace("Qu", "QU") 
+    current = "".join(board[r*GRID_SIZE + c].replace("Qu", "QU")
                      for r, c in selected_path)
     screen.blit(small_font.render("Word: " + current.upper(), True, BLACK), (x, 20))
     
