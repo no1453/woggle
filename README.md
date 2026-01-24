@@ -56,7 +56,7 @@ Note: "Qu" counts as one tile but two letters.
 
 **Mouse:**
 - Click letters to build words
-- Click selected letters to deselect them
+- Click first selected letter to deselect all
 - Scroll in the word list area to view all found words
 - Click and drag scrollbars for precise control
 
