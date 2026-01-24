@@ -14,6 +14,11 @@ Woggle is a word-finding game where you create words by connecting adjacent lett
 
 Install dependencies with:
 ```bash
+pip install -r requirements.txt
+```
+
+Or manually:
+```bash
 pip install pygame numpy
 ```
 
@@ -100,7 +105,46 @@ Click the "Cheat" button to reveal all possible words on the current board. In c
 - Sound effects for feedback
 - Smooth scrolling with mouse wheel and draggable scrollbars
 
+## Project Structure
+
+```
+woggle/
+├── woggle.py          # Main game file with GameState class
+├── test_woggle.py     # Unit tests for game logic
+├── requirements.txt   # Python dependencies
+├── words              # Dictionary file (370K+ words)
+├── woggle.ico         # Application icon
+├── woggleSplash.png   # Splash screen image
+└── README.md          # This file
+```
+
+## Testing
+
+Run the unit tests with:
+```bash
+python -m unittest test_woggle -v
+```
+
+The test suite includes 34 tests covering:
+- Adjacency checking (horizontal, vertical, diagonal)
+- Scoring calculations
+- Board generation
+- Word validation (including Qu tile handling)
+- Word finding algorithms
+- Path finding
+
 ## Version History
+
+**v1.3.0** (2026.01.23)
+- Major refactor: Game state now managed by `GameState` class
+- Added `requirements.txt` for dependency management
+- Added comprehensive unit test suite (34 tests)
+- Improved dictionary loading with better error handling
+  - Handles encoding errors with automatic fallback
+  - Validates dictionary is not empty
+  - Handles permission errors gracefully
+- Added serialization methods (`to_dict`/`from_dict`) for future save/load feature
+- Code organization improvements with constants moved to top of file
 
 **v1.2.5** (2026.01.19)
 - Added 20 pixel navy blue rounded rectangle border around the grid
