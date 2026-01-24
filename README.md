@@ -21,7 +21,7 @@ pip install pygame numpy
 
 1. Clone or download this repository
 2. Place a dictionary file named `words` in the same directory as `woggle.py`,
-   also needed are the icon and splash files.
+   One comes with the repo, also needed are the icon and splash files.
    - The dictionary should contain one word per line
    - Only words with 3 or more letters will be used
    - Words should be in plain text format
@@ -102,8 +102,11 @@ Click the "Cheat" button to reveal all possible words on the current board. In c
 
 ## Version History
 
-**v1.2.4** (2026.01.19)
-- Fixed visual style of the corners of the cubes
+**v1.2.5** (2026.01.19)
+- Added 20 pixel navy blue rounded rectangle border around the grid
+- Enhanced visual style with double-bordered rounded corners on letter tiles
+- Fixed word validation for words with "Qu" tile in any position (not just at start)
+- "Qu" tile now displays as "Qu" (mixed case) on the grid face
 
 **v1.2.3** (2026.01.18)
 - Fixed Qu scoring calculation
